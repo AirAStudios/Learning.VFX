@@ -2,19 +2,31 @@
 {
     text-align: center;
 }
-.blue
+.bluetext
 {
     color:#4d85ff;
 }
-.white
+.whitetext
 {
     color:#ffffff;
 }
-.black
+.blacktext
 {
     color:#110500;
 }
-.red
+.redtext
 {
     color:#e62062;
+}
+.redback
+{
+    background-color: #e62062;
+}
+.whiteback
+{
+    background-color: #ffffff;
+}
+.blueback
+{
+    background-color: #4d85ff;
 }
