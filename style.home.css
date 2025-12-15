@@ -78,7 +78,8 @@
   background: linear-gradient(
     to bottom,
     #c7cbfd,
-    #ffffff,
+    #ffffff
   );
   clip-path: polygon(calc(50% - var(--t)/2) 0,calc(50% - var(--t)/2) calc(100% - var(--h)),0 calc(100% - var(--h)),50% 100%,100% calc(100% - var(--h)),calc(50% + var(--t)/2) calc(100% - var(--h)),calc(50% + var(--t)/2) 0);
+  display: flex;
 }
