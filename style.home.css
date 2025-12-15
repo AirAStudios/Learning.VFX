@@ -17,15 +17,15 @@
   font-style: normal;
 }
 .select_bar {
-  width: 500px;
-  height: 56px;
+  width: 950px;
+  height: 75px;
 
   background: linear-gradient(
     to right,
     #f5f6fe,
     #a2b1f8
   );
-  border: 2px solid #4d85ff;
+  border: 4px solid #4d85ff;
 
   box-shadow: 0 0 12px rgba(79, 102, 255, 0.4);
 
@@ -35,10 +35,12 @@
   align-items: center;
 
   position: relative;
+  margin: auto;
+  top: 90px;
 }
 .circle_icon {
-  width: 44px;
-  height: 44px;
+  width: 75px;
+  height: 75px;
 
   background: linear-gradient(
     to bottom,
@@ -53,13 +55,18 @@
   align-items: center;
   justify-content: center;
 
-  margin-left: 6px;
-  font-size: 20px;
+  margin-left: 0px;
+  font-size: 70px;
 }
 .label {
-  margin-left: 14px;
-  font-weight: 600;
+  margin-left: 10px;
+  font-weight: 900;
   letter-spacing: 2px;
   color: #9fa5ea;
+  font-size: 25px;
+}
+.large_title {
+  font-size:130px;
+  top: 20px;
 }
 
