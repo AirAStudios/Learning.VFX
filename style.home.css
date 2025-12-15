@@ -68,6 +68,17 @@
 
   margin-left: 0px;
   font-size: 70px;
+  /* Interactivity*/
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.select_bar:hover .icon_circle {
+  background: linear-gradient(
+    to bottom,
+    #5b77e7,
+    #81afff
+  );
+  transform: scale(1.05);
 }
 .label {
   margin-left: 10px;
@@ -93,5 +104,5 @@
   );
   clip-path: polygon(calc(50% - var(--t)/2) 0,calc(50% - var(--t)/2) calc(100% - var(--h)),0 calc(100% - var(--h)),50% 100%,100% calc(100% - var(--h)),calc(50% + var(--t)/2) calc(100% - var(--h)),calc(50% + var(--t)/2) 0);
   display: flex;
-  margin-right: 4px;
+  margin-right: 5px;
 }
