@@ -1,2 +1,2 @@
-# Animation-eduV1
+# Learning.VFX
 Short site for animation
