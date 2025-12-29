@@ -1,8 +1,9 @@
-{% extends "layout_fav.html" %}
+{% extends "layout_nofav.html" %}
 
 {% block style %}
     <link href="/static/css/style.main.css" rel="stylesheet">
-    <link href="/static/css/menus/index.style.menus.css" rel="stylesheet">
+    <link href="/static/css/menus/login.style.menus.css" rel="stylesheet">
+    <link href="/static/css/other/login.style.form.css" rel="stylesheet">
     <link href="/static/css/colour/index.style.colour.css" rel="stylesheet">
 {% endblock %}
 
@@ -13,7 +14,7 @@
     <link rel="manifest" href="/static/favicon_io/site.webmanifest">
 {% endblock %}
 {% block title %}
-    Homepage:
+    Login:
 {% endblock %}
 
         {% block dropdown %}  
@@ -27,6 +28,11 @@
                         </div>
                     </div>
                 </li>
+                <script>
+                    document.getElementById("home_box").addEventListener('click', function() {
+                        window.location.href = "/";
+                    })
+                </script>
                 <li>
                     <div class="purple_text_bounding_box drop" id="chemistry_box">
                         <div class="dropdown_item_purple fontmain purpletext drop">CHEMISTRY</div>
@@ -43,45 +49,34 @@
             </ul>
         </div>
         {% endblock %}
-        {% block route %}
-        "/"
-        {% endblock %}
 
     {% block main %}
-        <div class="bluetext fontbold large_title">
+        <div class="bluetext fontbold medium_title">
             LEARNING.VFX
+        </div>
+        <div class="bluetext fontbold small_title">
+            LOGIN
         </div>
 
         <canvas id="scene" class="scene"></canvas>
         <script type="module" src="static/js/index.scene.js"></script>
 
         <div class="ui">
-            <div class="select_bar" id="select_bar">
-                <div class="circle_icon select_item">
-                    <div class="down_arrow_icon select_item"></div>
+            <form action="/login" method="post">
+                <div class="form">
+                    <input autocomplete="off" class="form_input fontmain bluetext" name="username" placeholder="USERNAME" type="text">
                 </div>
-                <span class="label fontmain select_item">SELECT SUBJECT</span>
-                <div class="chem_bar select_item" id="chemistry_bar">
-                    <span class="label_chem fontmain select_item">CHEMISTRY</span>
+                <div class="form">
+                    <input class="form_input fontmain bluetext" name="password" placeholder="PASSWORD" type="password">
                 </div>
-                <script>
-                    document.getElementById("chemistry_bar").addEventListener('click', function() {
-                        //From stack overflow
-                        if (document.getElementById("chemistry_bar").classList.contains('active')) {
-                            window.location.href = "/chemistry";
-                        }
-                    })
-                </script>
-            </div>
+                <button class="button whitetext fontmain" type="submit">LOGIN</button>
+            </form>
+            <div class="register_btn fontmain greytext">No account? Click <span class="here" id="here" >HERE</span> to register.</div>
             <script>
-                document.getElementById("select_bar").addEventListener('click', function() {
-                    document.getElementById("select_bar").classList.toggle('active');
-                    var select_options = document.getElementsByClassName("select_item")
-                    for(var i = 0; i < select_options.length; i++)
-                    {
-                        select_options[i].classList.toggle('active');
-                    }
+                document.getElementById("here").addEventListener('click', function() {
+                    window.location.href = "/register";
                 })
             </script>
-        </div>
+            <div class="problem fontmain redtext">{{ problem }}</div>
+            <!-- style="display: inline" from https://stackoverflow.com/questions/1826735/how-do-i-prevent-div-tag-starting-a-new-line -->
     {% endblock %}

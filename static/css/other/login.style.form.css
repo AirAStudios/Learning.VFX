@@ -1,0 +1,64 @@
+.form {
+    margin: 20px;
+}
+.form_input {
+    background-color: #ffffff;
+    border: 4px solid #474aff;
+    height: 100px;
+    width: 1000px;
+    box-shadow: 0 0 0px rgba(79, 102, 255, 0.7);
+    border-radius: 40px;
+    padding-left: 30px;
+    font-size: 4rem;
+    transform-origin: center;
+    transform: scale(1);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.form_input:hover {
+    transform: scale(1.05);
+    box-shadow: 
+        0 0 6px rgba(79, 102, 255, 0.7),
+        0 0 18px rgba(79, 102, 255, 0.4); 
+}
+.button {
+    background-color: #474aff;
+    height: 110px;
+    width: 400px;
+    margin-top: 20px;
+    font-size: 4rem;
+    border-radius: 50px;
+    border: 4px solid #474aff;
+    transform-origin: center;
+    transform: scale(1);
+    transition: transform 0.25s ease, font-size 0.25s ease;
+}
+.button:hover {
+    transform: scale(1.1);
+    font-size: 4.2rem;
+}
+
+.form_input::placeholder {
+    color: #aeb2b6
+}
+.register_btn {
+    font-size: 1.8rem;
+    margin-top: 30px;   
+}
+strong {
+    font-weight: 800;
+}
+.here {
+    color: #474aff;
+    text-decoration: underline;
+    transform-origin: center;
+    transform: scale(1);
+    transition: transform 0.25s ease;
+    white-space:nowrap;
+}
+.here:hover {
+    transform: scale(2);
+}
+.problem {
+    font-size: 2rem;
+    margin-top: 10px;
+}

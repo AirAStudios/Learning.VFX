@@ -1,0 +1,18 @@
+.main_scene {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    margin-top: clamp(2.5rem, 5.3rem, 7.2rem);
+}
+.scene {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  height: 100%;
+  width: 100%;
+  display: block;
+}

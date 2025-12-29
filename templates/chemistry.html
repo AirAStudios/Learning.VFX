@@ -1,8 +1,9 @@
-{% extends "layout.html" %}
+{% extends "layout_fav.html" %}
 
 {% block style %}
-    <link href="/static/style.main.css" rel="stylesheet">
-    <link href="/static/chemistry/style.menus.css" rel="stylesheet">
+    <link href="/static/css/style.main.css" rel="stylesheet">
+    <link href="/static/css/menus/chemistry.style.menus.css" rel="stylesheet">
+    <link href="/static/css/colour/chemistry.style.colour.css" rel="stylesheet">
 {% endblock %}
 
 {% block favicon %}
@@ -16,7 +17,7 @@
 {% endblock %}
 
         {% block dropdown %}  
-        <div class="dropdown ui drop">
+        <div class="dropdown ui drop purpleborder">
             <ul class="dropdown_list">
                 <li>
                     <div class="blue_text_bounding_box drop" id="home_box">
@@ -41,12 +42,9 @@
                 </script>
             </ul>
         </div>
-            <div class="star" id="star">★</div>
-            <script>
-                document.getElementById("star").addEventListener('click', function() {
-                        document.getElementById("star").classList.toggle('active');;
-                    })
-            </script>
+        {% endblock %}
+        {% block route %}
+        "/chemistry"
         {% endblock %}
 
     {% block main %}
@@ -55,22 +53,22 @@
         </div>
 
         <canvas id="scene" class="scene"></canvas>
-        <script type="module" src="static/index.main.js"></script>
+        <script type="module" src="static/js/chemistry.scene.js"></script>
 
         <div class="ui">
             <div class="select_bar" id="select_bar">
                 <div class="circle_icon select_item">
                     <div class="down_arrow_icon select_item"></div>
                 </div>
-                <span class="label fontmain select_item">SELECT SUBJECT</span>
+                <span class="label fontmain select_item">SELECT TOOL</span>
                 <div class="chem_bar select_item" id="chemistry_bar">
-                    <span class="label_chem fontmain select_item">CHEMISTRY</span>
+                    <span class="label_chem fontmain select_item">ATOM VISUALISER</span>
                 </div>
                 <script>
                     document.getElementById("chemistry_bar").addEventListener('click', function() {
                         //From stack overflow
                         if (document.getElementById("chemistry_bar").classList.contains('active')) {
-                            window.location.href = 'chemistry.html';
+                            window.location.href = '/chem1';
                         }
                     })
                 </script>

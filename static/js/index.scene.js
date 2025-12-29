@@ -32,9 +32,9 @@ function loadModel(path, position = {x:0, y:0, z:0}, scale = 1, rotation = {x:0,
             });
             models.push(model);
         },
-        undefined,
-        (error) => {
-            console.error('Error loading model:', error);
+        undefined, 
+        function ( error ) {
+                console.error( error );
         }
     );
 }

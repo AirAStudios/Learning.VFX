@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        {% block style %}{% endblock %}
+        {% block favicon %}{% endblock %}
+        <meta charset="UTF-8">
+        <script type="importmap">
+            {
+                "imports": {
+                    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+                }
+            }
+        </script>
+        <title>
+            {% block title %}{% endblock %} Learning.VFX
+        </title>
+    </head>
+    <body class="centered">
+        <div class="top_bar">
+            <div class="menu_bounding_box" id="menu_box">
+                <div class="menu"></div>
+            </div>
+            {% block dropdown %}{% endblock %}
+                    <div class="favourites fontmain {{ colour }}">FAVOURITES: 
+                    {% for favourite in favourites %}
+                        <span class="favourite {{favourite.colour}}" id="{{ favourite.route }}">{{ favourite.name }}</span>
+                    {% endfor %}
+                    <script>
+                        //Select many elements: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
+                        favourites = document.querySelectorAll(".favourite")
+                        // Iterate over list: https://www.index.dev/blog/javascript-object-iteration-methods
+                        favourites.forEach(element => {
+                            element.addEventListener('click', function() {
+                                window.location.href = element.id;
+                            })
+                        })
+                    </script>
+                </div>
+
+                    {% if user == 1 %}
+                        <div class="login {{ colour }} fontmain" id="profile">PROFILE</div>
+                        <script>
+                            document.getElementById("profile").addEventListener('click', function() {
+                                window.location.href = "/profile"
+                            })
+                        </script>
+                    {% else %}
+                        <div class="login {{ colour }} fontmain" id="login">LOGIN</div>
+                        <script>
+                            document.getElementById("login").addEventListener('click', function() {
+                                window.location.href = "/login"
+                            })
+                        </script>
+                    {% endif %}
+                    <div class="star" id="star">★</div>
+                    <script>
+                        // Initialise variables
+                        star = document.getElementById("star")
+                        // Set star to correct position
+                        active = "{{ active }}"
+                        if (active == "1") {
+                            if (!(star.classList.contains("active"))) {
+                                document.getElementById("star").classList.toggle('active');
+                            }
+                        }
+                        else {
+                            if (star.classList.contains("active")) {
+                                document.getElementById("star").classList.toggle('active');
+                            }
+                        }
+                        // Alow ability to change star and send data to server
+                        star.addEventListener('click', function() {
+                            document.getElementById("star").classList.toggle('active');
+                            // Check if they have favourited or unfavourited the page
+                            // Learned from https://stackoverflow.com/questions/44578580/detect-pseudo-css-activation
+                            // Learned from https://stackoverflow.com/questions/6396101/pure-javascript-send-post-data-without-a-form
+                            var xhr = new XMLHttpRequest();
+                            xhr.open("POST", {% block route %}{% endblock %} , true);
+                            xhr.setRequestHeader('Content-Type', 'application/json');
+                            xhr.send(JSON.stringify( { "favourite": 0, } ));
+                            xhr.onload = function () {
+                                if (xhr.status === 200) {
+                                    location.reload();   // refresh page
+                                }
+                            };
+
+                        })
+                    </script>
+                    <div class="error fontmain redtext">{{ error }}</div>
+
+            <script>
+                document.getElementById("menu_box").addEventListener('click', function() {
+                    document.getElementById("menu_box").classList.toggle('active');
+                    var dropdown_items = document.getElementsByClassName("drop")
+                    for(var i = 0; i < dropdown_items.length; i++)
+                    {
+                        dropdown_items[i].classList.toggle('active');
+                    }
+                })
+            </script>
+        </div>
+        {% block main %}{% endblock %}
+        <footer class="blacktext fontmain">
+            
+        </footer>
+    </body>
+</html>
