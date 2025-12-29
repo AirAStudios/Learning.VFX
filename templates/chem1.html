@@ -59,22 +59,37 @@
 
         <canvas id="scene" class="main_scene"></canvas>
         <div class="ui">
-            <!-- Input range type found via: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/range -->
-            <input type="range" id="opacity_slider" class="opacity_slider" name="opacity_slider" min="0" max="100" value="70"></input>
             <ul>
                 <li>
-                    <div class="toggle_btn" id="toggle_btn1">
+                    <select id="molecule_choice" class="molecule_choice fontmain purpletext">
+                        <option id="CH4" value="CH4">Methane (CH₄)</option>
+                        <option id="CH3F" value="CH3F">Fluoromethane (CH₃F)</option>
+                    </select>
+                </li>
+                <li>
+                    <div class="slider_container" id="slider_container">
+                        <!-- Input range type found via: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/range -->
+                        <input type="range" id="opacity_slider" class="opacity_slider"min="0" max="100" value="75"></input>
+                        <span class="fontmain whitetext slider_text_w" id="slider_text_w">Opacity: 75%</span>
+                        <span class="fontmain purpletext slider_text_p" id="slider_text_p">Opacity: 75%</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="toggle_btn list_item_btn1" id="toggle_btn1">
                         <div class="toggle_btn_tick_icon" id="toggle_btn_tick_icon1"></div>
+                        <div class="btn_text fontmain purpletext">Show Influence Spheres</div>
                     </div>
                 </li>
                 <li>
-                    <div class="toggle_btn list_item_btn1" id="toggle_btn2">
+                    <div class="toggle_btn list_item_btn2" id="toggle_btn2">
                         <div class="toggle_btn_tick_icon" id="toggle_btn_tick_icon2"></div>
+                        <div class="btn_text fontmain purpletext">Colour spheres by hue</div>
                     </div>
                 </li>
                 <li>
-                    <div class="toggle_btn list_item_btn2" id="toggle_btn3">
+                    <div class="toggle_btn list_item_btn3" id="toggle_btn3">
                         <div class="toggle_btn_tick_icon" id="toggle_btn_tick_icon3"></div>
+                        <div class="btn_text fontmain purpletext">Colour spheres by value</div>
                     </div>
                 </li>
             </ul>
