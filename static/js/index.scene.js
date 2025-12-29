@@ -39,17 +39,17 @@ function loadModel(path, position = {x:0, y:0, z:0}, scale = 1, rotation = {x:0,
     );
 }
 //Left
-loadModel('static/models/blockV4.glb', {x: -3, y:1.2, z:2.1}, 0.12, {x:0.3, y:-0.05, z:-0.98});
-loadModel('static/models/blockV4.glb', {x: -2.6, y:0.15, z:1.5}, 0.12, {x:-0.8, y:2.3, z:1.4});
-loadModel('static/models/blockV4.glb', {x: -3.4, y:-0.6, z:2}, 0.12, {x:0.35, y:1.9, z:0.1});
-loadModel('static/models/blockV4.glb', {x: -2, y:-1.5, z:1}, 0.12, {x:0.5, y:3.1, z:-0.05});
-loadModel('static/models/blockV4.glb', {x: -2.3, y:-1.5, z:2.3}, 0.11, {x:1.6, y:0.05, z:-0.6});
+loadModel('static/models/blockV5.glb', {x: -3, y:1.2, z:2.1}, 0.12, {x:0.3, y:-0.05, z:-0.98});
+loadModel('static/models/blockV5.glb', {x: -2.6, y:0.15, z:1.5}, 0.12, {x:-0.8, y:2.3, z:1.4});
+loadModel('static/models/blockV5.glb', {x: -3.4, y:-0.6, z:2}, 0.12, {x:0.35, y:1.9, z:0.1});
+loadModel('static/models/blockV5.glb', {x: -2, y:-1.5, z:1}, 0.12, {x:0.5, y:3.1, z:-0.05});
+loadModel('static/models/blockV5.glb', {x: -2.3, y:-1.5, z:2.3}, 0.11, {x:1.6, y:0.05, z:-0.6});
 //Right
-loadModel('static/models/blockV4.glb', {x: 3, y:1.2, z:2.1}, 0.12, {x:-2.3, y:-1.5, z:-1.5});
-loadModel('static/models/blockV4.glb', {x: 2.0, y:0.3, z:1.5}, 0.12, {x:-0.8, y:2.3, z:1.4});
-loadModel('static/models/blockV4.glb', {x: 3.1, y:-0.6, z:2}, 0.12, {x:0.35, y:1.9, z:0.1});
-loadModel('static/models/blockV4.glb', {x: 2, y:-1.3, z:1}, 0.12, {x:-0.8, y:-1, z:-0.05});
-loadModel('static/models/blockV4.glb', {x: 2.3, y:-1.5, z:2.3}, 0.11, {x:1.6, y:0.05, z:-0.6});
+loadModel('static/models/blockV5.glb', {x: 3, y:1.2, z:2.1}, 0.12, {x:-2.3, y:-1.5, z:-1.5});
+loadModel('static/models/blockV5.glb', {x: 2.0, y:0.3, z:1.5}, 0.12, {x:-0.8, y:2.3, z:1.4});
+loadModel('static/models/blockV5.glb', {x: 3.1, y:-0.6, z:2}, 0.12, {x:0.35, y:1.9, z:0.1});
+loadModel('static/models/blockV5.glb', {x: 2, y:-1.3, z:1}, 0.12, {x:-0.8, y:-1, z:-0.05});
+loadModel('static/models/blockV5.glb', {x: 2.3, y:-1.5, z:2.3}, 0.11, {x:1.6, y:0.05, z:-0.6});
 
 const ambientLight = new THREE.AmbientLight(0x808080, 1);
 scene.add(ambientLight);

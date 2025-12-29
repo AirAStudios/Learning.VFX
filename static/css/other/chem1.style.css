@@ -124,3 +124,6 @@
     font-size: 2rem;
     text-align: left;
 }
+.drop_ui {
+    z-index: 12;
+}

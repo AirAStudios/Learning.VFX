@@ -43,6 +43,7 @@
 .register_btn {
     font-size: 1.8rem;
     margin-top: 30px;   
+    cursor: default;
 }
 strong {
     font-weight: 800;
@@ -54,6 +55,7 @@ strong {
     transform: scale(1);
     transition: transform 0.25s ease;
     white-space:nowrap;
+    cursor: pointer;
 }
 .here:hover {
     transform: scale(2);
@@ -61,4 +63,5 @@ strong {
 .problem {
     font-size: 2rem;
     margin-top: 10px;
+    cursor: default;
 }

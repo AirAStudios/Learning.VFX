@@ -75,7 +75,7 @@ def register():
             db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", request.form.get("username").lower(), hash)
         except:
             return render_template("register.html", problem="Username already taken!")
-        session["user_id"] = db.execute("SELECT id FROM users WHERE hash = ? AND username = ?", hash, request.form.get("username"))
+        session["user_id"] = db.execute("SELECT id FROM users WHERE hash = ? AND username = ?", hash, request.form.get("username"))[0]["id"]
         return redirect("/")
     else:
         return render_template("register.html", problem="")
