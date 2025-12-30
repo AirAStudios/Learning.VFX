@@ -83,23 +83,12 @@ window.addEventListener('mousemove', function(event) {
 const ROTATION_STRENGTH = 0.09;
 const SMOOTHING = 0.05;
 
-function resizeRendererToDisplaySize(renderer) {
-  const canvas = renderer.domElement;
-  const width = canvas.clientWidth;
-  const height = canvas.clientHeight;
-  const needResize = canvas.width !== width || canvas.height !== height;
-  if (needResize) {
-    renderer.setSize(width, height, false);
-  }
-  return needResize;
-}
-
 function animate() {
   requestAnimationFrame(animate);
 
   models.forEach(function(model) {
+    //Learned from ChatGPT Prompt: The model's rotation: {x:90, y:0, z:0}. The model starts off spinning instead of just rotating slightly. models.forEach(model => { \n const targetRotationX = mouse.y * ROTATION_STRENGTH; \n const targetRotationY = mouse.x * ROTATION_STRENGTH; \n model.rotation.x += (targetRotationX - model.rotation.x) * 0.05; \n model.rotation.y += (targetRotationY - model.rotation.y) * 0.05;});
     const base = model.userData.baseRotation;
-
     const targetX = base.x + mouse.y * ROTATION_STRENGTH;
     const targetY = base.y + mouse.x * ROTATION_STRENGTH;
 
@@ -107,6 +96,7 @@ function animate() {
     model.rotation.y += (targetY - model.rotation.y) * SMOOTHING;
   });
   const canvas = renderer.domElement;
+  //From three.js responsive design
   camera.aspect = canvas.clientWidth / canvas.clientHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);

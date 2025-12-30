@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 export var global_active = 0;
 export function setGlobal_Active(a) {
@@ -9,23 +10,26 @@ export var global_hue = 0;
 export function setGlobal_hue(h) {
     global_hue = h;
 }
-export function change_colour(model, opacity, hydrogen, carbon, flourine) {
+export function change_colour(model, opacity, type) {
+    const hydrogen = new Array(0x737373, 0xBFFF47)
+    const carbon = new Array(0x5C5C5C, 0XFFDB47)
+    const flourine = new Array(0x000000, 0xff4747)
     //Learned traversal operation from: https://waelyasmina.net/articles/searching-and-iterating-through-objects-in-three-js/#:~:text=To%20iterate%20through%20the%20entire,node)%20%7B%20if%20(node.
     model.traverse(function (node) {
         if (node.isMesh) {
             // getHexString learned from ChatGPT prompt: What is the method to get the hex value of an emission colour in three.js. getHex only returns an integer.
             //Check for Hydrogen
             if (node.material.emissive.getHexString() == "210000") {
-                node.material.color.setHex(hydrogen);
+                node.material.color.setHex(hydrogen[type]);
                 node.material.emissiveIntensity  = 0.01;
             }
             // Check for Carbon
             else if (node.material.emissive.getHexString() == "250000") {
-                node.material.color.setHex(carbon);
+                node.material.color.setHex(carbon[type]);
                 node.material.emissiveIntensity  = 0.01;
             }
             else if (node.material.emissive.getHexString() == "400000") {
-                node.material.color.setHex(flourine);
+                node.material.color.setHex(flourine[type]);
                 node.material.emissiveIntensity = 0.01;
             }
             // Other
@@ -94,3 +98,4 @@ export function combine(function1, function2) {
     function1()
     function2()
 }
+
