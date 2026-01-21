@@ -25,8 +25,13 @@ def chemistry():
 
 @app.route("/chem1", methods=["GET", "POST"])
 def chem1():
-    #return chemistry
-    return favourites("/chem1", "ATOM VISUALISER", "chem1.html", "purpletext")
+    #return molecule visualiser
+    return favourites("/chem1", "MOLECULE VISUALISER", "chem1.html", "purpletext")
+
+@app.route("/chem2", methods=["GET", "POST"])
+def chem2():
+    #return animation viewer
+    return favourites("/chem2", "ANIMATION VIEWER", "chem2.html", "purpletext")
     
 
 @app.route("/login", methods=["GET", "POST"])

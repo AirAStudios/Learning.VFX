@@ -24,15 +24,9 @@ renderer.setPixelRatio(window.devicePixelRatio);
 
 const loader = new GLTFLoader();
 //Loadmodel subprogram 
-function loadModel(path, CH4, electronegativity=0, position = {x:0, y:0, z:0}, scale = 1, rotation = {x:0, y:0, z:0}) {
+function loadModel(path, molecule, electronegativity=0, position = {x:0, y:0, z:0}, scale = 1, rotation = {x:0, y:0, z:0}) {
     loader.load(
         path, function(gltf) {
-            if (CH4==1) {
-                var find = "CH4";
-            }
-            else {
-                var find = "CH3F";
-            }
             const model = gltf.scene;
             model.position.set(position.x, position.y, position.z);
             model.scale.set(scale, scale, scale);
@@ -41,7 +35,7 @@ function loadModel(path, CH4, electronegativity=0, position = {x:0, y:0, z:0}, s
             if (electronegativity == 0) {
                 scene.add(model)
                 document.getElementById("molecule_choice").addEventListener('change', function() {
-                    if (document.getElementById("molecule_choice").value==find) {
+                    if (document.getElementById("molecule_choice").value == molecule) {
                         //Scene.children learned from ChatGPT prompt: Why doesn't (scene.model) {} check weather a model is in the scene three.js
                         if(!scene.children.includes(model)) 
                             { scene.add(model) }
@@ -52,7 +46,7 @@ function loadModel(path, CH4, electronegativity=0, position = {x:0, y:0, z:0}, s
             }
             else {
                 var opacity = 0.75;
-                if (CH4 == 0) {
+                if (molecule == "CH3F") {
                     if (global_active == 1) {
                         scene.add(model);
                         opacity = document.getElementById("opacity_slider").value/100;
@@ -86,7 +80,7 @@ function loadModel(path, CH4, electronegativity=0, position = {x:0, y:0, z:0}, s
                     { 
                         change_colour(model, opacity, 0); 
                     }
-                    if (CH4==1){
+                    if (molecule == "CH4"){
                         //Change CSS properties and text based on slider
                         //Gradient technique learned from: https://www.youtube.com/watch?v=EYyWzE1DWuY
                         document.getElementById("slider_container").style.background = `linear-gradient(to right, #7045f5 ${progress}%, #ffffff ${progress}%)`;
@@ -101,7 +95,7 @@ function loadModel(path, CH4, electronegativity=0, position = {x:0, y:0, z:0}, s
                 document.getElementById("toggle_btn3").classList.toggle('active'); 
                 document.getElementById("toggle_btn_tick_icon3").classList.toggle('active')
                 //Create a toggle between greyscale and hue button when selecting hue button
-                if (CH4==1) {
+                if (molecule == "CH4") {
                     active_toggle("toggle_btn2", "toggle_btn_tick_icon2", 
                         //Function for if it is active
                         //Pass in two functions in one slot
@@ -186,7 +180,7 @@ function loadModel(path, CH4, electronegativity=0, position = {x:0, y:0, z:0}, s
                         document.getElementById("toggle_btn_tick_icon3").classList.toggle('active')
                     }
                     //Check what molecule needs to be displayed
-                    if (document.getElementById("molecule_choice").value==find) {
+                    if (document.getElementById("molecule_choice").value==molecule) {
                         //If CH4 needs to be diplayed, check if it already is, then add
                         if (!scene.children.includes(model) && global_active==1) {
                             scene.add(model)
@@ -216,13 +210,13 @@ function loadModel(path, CH4, electronegativity=0, position = {x:0, y:0, z:0}, s
     );
 }
 
-loadModel('/static/models/MethaneV1.glb', 1, 0);
-loadModel('/static/models/MethaneSpheresV8.glb', 1, 1);
+loadModel('/static/models/MethaneV1.glb', "CH4", 0);
+loadModel('/static/models/MethaneSpheresV8.glb', "CH4", 1);
 var done = 0;
 document.getElementById("molecule_choice").addEventListener('change', function() {
     if (done==0) {
-        loadModel('/static/models/FlouromethaneV1.glb', 0, 0);
-        loadModel('/static/models/Flouromethane_SpheresV3.glb', 0, 1);
+        loadModel('/static/models/FlouromethaneV1.glb', "CH3F", 0);
+        loadModel('/static/models/Flouromethane_SpheresV3.glb', "CH3F", 1);
         done=1;
     }
 })

@@ -5,13 +5,26 @@ html, body {
   height: 100%;
 }
 .scene {
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   height: 100%;
   width: 100%;
   display: block;
+}
+.scene2 {
+  position: relative;
+  pointer-events: none;
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+.container {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
 }
 .ui {
   position: relative;
@@ -165,4 +178,25 @@ ul {
 
 .favourite:hover {
   transform: scale(1.1);
+}
+
+.blank {
+  width: 100%;
+  height: 500px;
+  margin-top: 2000px;
+  background: #ffffff;
+  z-index: 9;
+  position: relative;
+}
+.footer {
+  width: 100%;
+  height: 800px;
+  margin-top: 500px;
+  background: #474aff;
+  z-index: 9;
+  position: relative;
+}
+
+footer {
+  background: #474aff;
 }
