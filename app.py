@@ -3,7 +3,6 @@ from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import check_password_hash, generate_password_hash
 import os
-from app_functions import favourites_route
 
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
@@ -19,7 +18,9 @@ if app.config['SQLALCHEMY_DATABASE_URI'] is None:
     raise RuntimeError("Postgres database URL not set in environment variables")
 
 db = SQLAlchemy(app)
+
 from models import User
+from app_functions import favourites_route
 
 @app.route("/", methods=["GET", "POST"])
 def index():
