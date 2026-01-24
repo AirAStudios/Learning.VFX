@@ -1,9 +1,10 @@
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
+from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import check_password_hash, generate_password_hash
-from cs50 import SQL;
 import os
 from app_functions import favourites
+from models import User, Favourite
 
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
@@ -13,11 +14,11 @@ Session(app)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.debug = True
 
-# Configure CS50 Library to use SQLite database
-DATABASE_URL = os.environ.get("Postgres.DATABASE_URL")
-if DATABASE_URL is None:
-    raise RuntimeError("DATABASE_PUBLIC_URL is not set in environment variables")
-db = SQL(DATABASE_URL)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('Postgres.DATABASE_URL')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -54,12 +55,13 @@ def login():
             return render_template("login.html", problem="You must input a username")
         if not request.form.get("password"):
             return render_template("login.html", problem="You must input a password")
-        data = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username").lower())
-        if len(data) == 0:
+        data = User.query.filter_by(username=request.form.get("username").lower()).first()
+
+        if data is None:
             return render_template("login.html", problem="Invalid username")
-        elif not check_password_hash(data[0]["hash"], request.form.get("password")):
+        elif not check_password_hash(data.hash, request.form.get("password")):
             return render_template("login.html", problem="Incorrect password")
-        session["user_id"] = data[0]["id"]
+        session["user_id"] = data.id
         return redirect("/")
     else:
         return render_template("login.html", problem="")
@@ -82,11 +84,13 @@ def register():
         if request.form.get("password") != request.form.get("confirmation"):
             return render_template("register.html", problem="Your passwords must match")
         hash = generate_password_hash(request.form.get("password"))
-        try:
-            db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", request.form.get("username").lower(), hash)
-        except:
+        if User.query.filter_by(username=request.form.get("username").lower()).first():
+            db.session.add(User(username=request.form.get("username").lower(), hash=hash))
+            db.session.commit()
+        else:
             return render_template("register.html", problem="Username already taken!")
-        session["user_id"] = db.execute("SELECT id FROM users WHERE hash = ? AND username = ?", hash, request.form.get("username"))[0]["id"]
+        
+        session["user_id"] = (User.query.filter_by(username=request.form.get("username").lower())).id
         return redirect("/")
     else:
         return render_template("register.html", problem="")
