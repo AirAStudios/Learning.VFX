@@ -19,32 +19,34 @@ if app.config['SQLALCHEMY_DATABASE_URI'] is None:
 
 db = SQLAlchemy(app)
 
-from models import User
-from app_functions import favourites_route
-
 @app.route("/", methods=["GET", "POST"])
 def index():
     #return homepage
+    from app_functions import favourites_route
     return favourites_route("/", "HOMEPAGE", "index.html", "bluetext")
 
 @app.route("/chemistry", methods=["GET", "POST"])
 def chemistry():
     #return chemistry
+    from app_functions import favourites_route
     return favourites_route("/chemistry", "CHEMISTRY", "chemistry.html", "purpletext")
 
 @app.route("/chem1", methods=["GET", "POST"])
 def chem1():
     #return molecule visualiser
+    from app_functions import favourites_route
     return favourites_route("/chem1", "MOLECULE VISUALISER", "chem1.html", "purpletext")
 
 @app.route("/chem2", methods=["GET", "POST"])
 def chem2():
     #return animation viewer
+    from app_functions import favourites_route
     return favourites_route("/chem2", "FRACTIONAL DISTILLATION", "chem2.html", "purpletext")
     
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    from models import User
     #Provide login service
     try:
         if session["user_id"]:
@@ -70,6 +72,7 @@ def login():
     
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    from models import User
     #Register user for new account
     try:
         if session["user_id"]:
