@@ -14,8 +14,10 @@ Session(app)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.debug = True
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('Postgres.DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+if app.config['SQLALCHEMY_DATABASE_URI'] is None:
+    raise RuntimeError("Postgres database URL not set in environment variables")
 
 db = SQLAlchemy(app)
 
