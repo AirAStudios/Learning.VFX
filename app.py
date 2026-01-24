@@ -15,6 +15,8 @@ app.debug = True
 
 # Configure CS50 Library to use SQLite database
 DATABASE_URL = os.environ.get("postgresql://postgres:tNozOohHVJQxUQZPLRAKnQYoSietpVtV@postgres.railway.internal:5432/railway")
+if DATABASE_URL is None:
+    raise RuntimeError("DATABASE_PUBLIC_URL is not set in environment variables")
 db = SQL(DATABASE_URL)
 
 @app.route("/", methods=["GET", "POST"])
