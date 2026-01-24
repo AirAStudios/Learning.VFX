@@ -14,7 +14,7 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.debug = True
 
 # Configure CS50 Library to use SQLite database
-DATABASE_URL = os.environ.get("postgresql://postgres:tNozOohHVJQxUQZPLRAKnQYoSietpVtV@postgres.railway.internal:5432/railway")
+DATABASE_URL = os.environ.get("Postgres.DATABASE_URL")
 if DATABASE_URL is None:
     raise RuntimeError("DATABASE_PUBLIC_URL is not set in environment variables")
 db = SQL(DATABASE_URL)
