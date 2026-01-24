@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import check_password_hash, generate_password_hash
 import os
 from app_functions import favourites_route
-from models import User
 
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
@@ -14,13 +13,13 @@ Session(app)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.debug = True
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATA_URL")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 if app.config['SQLALCHEMY_DATABASE_URI'] is None:
     raise RuntimeError("Postgres database URL not set in environment variables")
 
 db = SQLAlchemy(app)
-
+from models import User
 
 @app.route("/", methods=["GET", "POST"])
 def index():
