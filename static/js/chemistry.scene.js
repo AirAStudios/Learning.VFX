@@ -11,7 +11,7 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 camera.position.z = 5;
 
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true});
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(window.innerWidth*4, window.innerHeight *4, false);
 
 const models = [];
 const loader = new GLTFLoader();
@@ -100,7 +100,7 @@ function animate() {
   const canvas = renderer.domElement;
   camera.aspect = canvas.clientWidth / canvas.clientHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(window.innerWidth *4, window.innerHeight *4, false);
   renderer.render(scene, camera);
 }
 

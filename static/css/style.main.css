@@ -63,10 +63,10 @@ ul {
 /*Menu*/
 .menu_bounding_box {
     position: relative;
-    width: 120px;
-    height: 90px;
+    width: 60px;
+    height: 43px;
     top: 0px;
-    margin-left: 0px;
+    margin-left: 5px;
     background-color: #00000000;
     cursor: pointer;
     transition: 
@@ -87,9 +87,9 @@ ul {
 /*Dropdown menu*/
 .login {
   position: absolute;
-  margin-left: 3960px;
-  font-size: 2.2rem;
-  margin-top: -70px;
+  margin-left: 1970px;
+  font-size: 1.2rem;
+  margin-top: -35px;
   transform: scale(1);
   transform-origin: center;
   transition: transform 0.25s ease;
@@ -99,13 +99,13 @@ ul {
   transform: scale(1.1);
 }
 .star {
-  height: 5rem;
-  width: 4.5rem;
-  margin-top: -100px;
-  margin-left: 3870px;
+  height: 2rem;
+  width: 2rem;
+  margin-top: -49px;
+  margin-left: 1920px;
   background: #00ff0400;
   color: #B7BBBF;
-  font-size: 4.5rem;
+  font-size: 2.3rem;
   transform: scale(1);
   transform-origin: center;
   transition: color 0.15s ease, transform 0.25s ease;
@@ -124,7 +124,7 @@ ul {
 
 /*Main title*/
 .large_title {
-  font-size:17rem;
+  font-size:9rem;
   top: 0px;
   margin-top: 0px;
   cursor: default;
@@ -152,17 +152,16 @@ ul {
 
 /*Select bar*/
 .error {
-  margin-left: 3800px;
-  font-size: 2rem;
+  font-size: 1.2rem;
   margin-top: 20px;
   text-align: right;
-  padding-right: 20px;
+  padding-right: 80px;
 }
 .favourites {
   position: absolute;
-  font-size: 2.2rem;
-  margin-top: -70px;
-  margin-left: 200px;
+  font-size: 1.2rem;
+  margin-top: -35px;
+  margin-left: 120px;
   word-spacing: 100px;
   cursor: default;
   transform-origin: center;

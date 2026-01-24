@@ -1,19 +1,19 @@
 .top_bar {
     background: #EAEDF1;
-    border-bottom: 4px solid #474aff;
+    border-bottom: 2px solid #474aff;
     box-shadow: 0 0 8px rgba(79, 88, 255, 0.4); 
-    height: clamp(2.3rem, 5rem, 7rem);
+    height: clamp(1.3rem, 2.7rem, 5rem);
     width: 100%;
 }
 
 .menu {
     position: relative;
-    width: 87px;
-    height: 13px;
+    width: 45px;
+    height: 7px;
     background-color: #474aff;
     border-radius: 18px;
-    top: 15px;
-    margin-left: 15px;
+    top: 6px;
+    margin-left: 8px;
 }
 .menu::before,
 .menu::after {
@@ -26,10 +26,10 @@
     border-radius: 18px;
 }
 .menu::before {
-    top: 23px;
+    top: 12px;
 }
 .menu::after {
-    top:46px;
+    top:24px;
 }
 
 .dropdown {
@@ -39,15 +39,15 @@
     #ffffff,
     #c7cbfd
   );
-  border-right: 0px solid #7045f5;
-  border-bottom: 0px solid #7045f5;
+  border-right: 0px solid #474aff;
+  border-bottom: 0px solid #474aff;
   box-shadow: 0 0 0cap rgba(79, 103, 255, 0);
   height: 0px;
-  width: 30rem;
-  margin-top: 94px;
+  width: 17rem;
+  margin-top: 45px;
   margin-left: 0px;
   top: 0;
-  border-bottom-right-radius: 25px;
+  border-bottom-right-radius: 15px;
   transition: 
     height 0.3s ease, 
     box-shadow 0.25s ease, 
@@ -55,8 +55,8 @@
     border-bottom 0.25s ease;
 }
 .dropdown.active {
-  height: 50rem;
+  height: 25rem;
   box-shadow: 0 0 6px rgba(79, 102, 255, 0.7);
-  border-right: 4px solid #7045f5;
-  border-bottom: 4px solid #7045f5;
+  border-right: 2px solid #474aff;
+  border-bottom: 2px solid #474aff;
 }

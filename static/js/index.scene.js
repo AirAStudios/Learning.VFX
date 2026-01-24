@@ -7,11 +7,14 @@ const canvas = document.getElementById('scene');
 const scene = new THREE.Scene();
 scene.background = null;
 
+const width = window.innerWidth *4;
+const height = window.innerHeight *4;
+
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10);
 camera.position.z = 5;
 
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true});
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(width, height, false);
 
 const models = [];
 const loader = new GLTFLoader();
@@ -99,7 +102,7 @@ function animate() {
   //From three.js responsive design
   camera.aspect = canvas.clientWidth / canvas.clientHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(width, height, false);
   renderer.render(scene, camera);
 }
 

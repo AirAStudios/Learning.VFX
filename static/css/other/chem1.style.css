@@ -1,11 +1,11 @@
 .toggle_btn {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   background-color: #474aff00;
-  border: 4px solid #7045f5;
+  border: 2px solid #7045f5;
   position: absolute;
   top:0;
-  margin-left: -15px;
+  margin-left: -26px;
   border-radius: 12px;
   transform: scale(1);
   transition: 
@@ -19,11 +19,11 @@
     background-color: #7145f5;
 }
 .toggle_btn_tick_icon {
-  height: 35px;
-  width: 12px;
-  margin-left: 12.5px;
-  border-bottom: 10px solid #ffffff00;
-  border-right: 10px solid #ffffff00;
+  height: 33px;
+  width: 11px;
+  margin-left: 11px;
+  border-bottom: 9px solid #ffffff00;
+  border-right: 9px solid #ffffff00;
   transform: rotate(45deg) translateY(-2px);
   top: 0;
   position: absolute;
@@ -31,65 +31,65 @@
     border 0.02s ease-in;
 }
 .toggle_btn_tick_icon.active {
-  border-bottom: 10px solid #ffffff;
-  border-right: 10px solid #ffffff;
+  border-bottom: 9px solid #ffffff;
+  border-right: 9px solid #ffffff;
 }
 .list_item_btn1 {
-    margin-top: 170px
+    margin-top: 130px
 }
 .list_item_btn2 {
-    margin-top: 250px;
+    margin-top: 190px;
 }
 .list_item_btn3 {
-    margin-top: 330px;
+    margin-top: 250px;
 }
 
 .molecule_choice {
     position: absolute;
-    border: 4px solid #7045f5;
-    margin-left:25px;
+    border: 2px solid #7045f5;
+    margin-left: 13px;
     text-align: left;
     left:0;
-    width: 400px;
-    height: 70px;
-    font-size: 2rem;
+    width: 320px;
+    height: 60px;
+    font-size: 1.5rem;
     border-radius: 12px;
     appearance: none;
     padding-left: 12px;
 }
 .slider_container {
     position: absolute;
-    border: 4px solid #7045f5;
+    border: 2px solid #7045f5;
     background: linear-gradient(
         to right,
         #7045f5 65%,
         #ffffff 65%
     );
-    margin-left:25px;
+    margin-left:13px;
     text-align: left;
     left:0;
     border-radius: 12px;
-    width: 400px;
-    height: 50px;
-    margin-top: 90px;
+    width: 320px;
+    height: 45px;
+    margin-top: 70px;
     z-index: 10;
 }
 .opacity_slider {
     appearance: none;
     outline: none;
-    width: 420px;
-    height: 50px;
+    width: 324px;
+    height: 45px;
     background-color: #ffffff00;
-    margin-left:-10px;
+    margin-left:-2px;
 }
 
 .opacity_slider::-webkit-slider-thumb {
     appearance:none;
     position: relative;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     background-color: #ffffff;
-    border: 4px solid #7045f5;
+    border: 2px solid #7045f5;
     border-radius: 12px;
     transform: scale(1);
     transform-origin: center;
@@ -102,27 +102,28 @@
 }
 
 .slider_text_w {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     position: absolute;
-    margin-top:-50px;
-    margin-left:10px;
+    margin-top:-45px;
+    margin-left:8px;
     z-index: 1;
     pointer-events: none;
 }
 .slider_text_p {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     position: absolute;
-    margin-top:-50px;
-    margin-left:196px;
+    margin-top:-45px;
+    margin-left:171px;
     width:200px;
     z-index: 0;
     pointer-events: none;
 }
 .btn_text {
     width: 500px;
-    margin-left: 70px;
-    font-size: 2rem;
+    margin-left: 60px;
+    font-size: 1.6rem;
     text-align: left;
+    margin-top: 2px;
 }
 .drop_ui {
     z-index: 12;
