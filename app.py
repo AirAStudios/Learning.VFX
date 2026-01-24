@@ -3,8 +3,8 @@ from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import check_password_hash, generate_password_hash
 import os
-from app_functions import favourites
-from models import User, Favourite
+from app_functions import favourite_route
+from models import User
 
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
@@ -23,22 +23,22 @@ db = SQLAlchemy(app)
 @app.route("/", methods=["GET", "POST"])
 def index():
     #return homepage
-    return favourites("/", "HOMEPAGE", "index.html", "bluetext")
+    return favourite_route("/", "HOMEPAGE", "index.html", "bluetext")
 
 @app.route("/chemistry", methods=["GET", "POST"])
 def chemistry():
     #return chemistry
-    return favourites("/chemistry", "CHEMISTRY", "chemistry.html", "purpletext")
+    return favourite_route("/chemistry", "CHEMISTRY", "chemistry.html", "purpletext")
 
 @app.route("/chem1", methods=["GET", "POST"])
 def chem1():
     #return molecule visualiser
-    return favourites("/chem1", "MOLECULE VISUALISER", "chem1.html", "purpletext")
+    return favourite_route("/chem1", "MOLECULE VISUALISER", "chem1.html", "purpletext")
 
 @app.route("/chem2", methods=["GET", "POST"])
 def chem2():
     #return animation viewer
-    return favourites("/chem2", "FRACTIONAL DISTILLATION", "chem2.html", "purpletext")
+    return favourite_route("/chem2", "FRACTIONAL DISTILLATION", "chem2.html", "purpletext")
     
 
 @app.route("/login", methods=["GET", "POST"])

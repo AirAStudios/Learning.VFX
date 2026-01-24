@@ -1,9 +1,8 @@
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import check_password_hash, generate_password_hash
 import os
-from models import User, Favourite
+from models import Favourite
 
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
@@ -15,7 +14,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-def favourites(route, name, html, colour_text):
+def favourites_route(route, name, html, colour_text):
     if request.method == "POST":
         #Check if anyone is logged in
         try:
