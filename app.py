@@ -31,7 +31,7 @@ def chem1():
 @app.route("/chem2", methods=["GET", "POST"])
 def chem2():
     #return animation viewer
-    return favourites("/chem2", "ANIMATION VIEWER", "chem2.html", "purpletext")
+    return favourites("/chem2", "FRACTIONAL DISTILLATION", "chem2.html", "purpletext")
     
 
 @app.route("/login", methods=["GET", "POST"])
