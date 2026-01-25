@@ -19,8 +19,6 @@ if app.config['SQLALCHEMY_DATABASE_URI'] is None:
 
 db = SQLAlchemy(app)
 
-db.init_app(app)
-
 @app.route("/", methods=["GET", "POST"])
 def index():
     #return homepage
