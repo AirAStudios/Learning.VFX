@@ -19,6 +19,8 @@ if app.config['SQLALCHEMY_DATABASE_URI'] is None:
 
 db = SQLAlchemy(app)
 
+db.init_app(app)
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     #return homepage
@@ -31,13 +33,13 @@ def chemistry():
     from app_functions import favourites_route
     return favourites_route("/chemistry", "CHEMISTRY", "chemistry.html", "purpletext")
 
-@app.route("/chem1", methods=["GET", "POST"])
+@app.route("/molecule_visualiser", methods=["GET", "POST"])
 def chem1():
     #return molecule visualiser
     from app_functions import favourites_route
     return favourites_route("/chem1", "MOLECULE VISUALISER", "chem1.html", "purpletext")
 
-@app.route("/chem2", methods=["GET", "POST"])
+@app.route("/fractional_distillation", methods=["GET", "POST"])
 def chem2():
     #return animation viewer
     from app_functions import favourites_route

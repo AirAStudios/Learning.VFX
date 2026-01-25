@@ -16,6 +16,7 @@ renderer.setPixelRatio(window.devicePixelRatio);
 
 const loader = new GLTFLoader();
 //Loadmodel subprogram 
+let mixer;
 function loadModel(path, position = {x:0, y:0, z:0}, scale = 1, rotation = {x:0, y:0, z:0}) {
     loader.load(
         path, function(gltf) {
@@ -24,6 +25,13 @@ function loadModel(path, position = {x:0, y:0, z:0}, scale = 1, rotation = {x:0,
             model.scale.set(scale, scale, scale);
             model.rotation.set(rotation.x, rotation.y, rotation.z);
             model.userData.baseRotation = model.rotation.clone();
+            scene.add(model);
+            //Animaiton learned from https://www.youtube.com/watch?v=zNXQS2DfckU&t=137s
+            mixer = new THREE.AnimationMixer(model);
+            for(let i=0;i<=10;i++)
+            {
+                mixer.clipAction(gltf.animations[i]).play();
+            }
         },
         undefined, 
         function ( error ) {
@@ -32,27 +40,24 @@ function loadModel(path, position = {x:0, y:0, z:0}, scale = 1, rotation = {x:0,
     );
 }
 
-loadModel('/static/models/MethaneV1.glb');
-loadModel('/static/models/MethaneSpheresV8.glb');
+loadModel('/static/models/FractionalColumnV7.glb');
 
-const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
-scene.add(hemiLight);
-
-const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
-dirLight.position.set(5,10,7);
+renderer.physicallyCorrectLights = true;
+const dirLight = new THREE.DirectionalLight(0xffffff, 10);
+dirLight.position.set(5,5,5);
 scene.add(dirLight);
 
-scene.add(new THREE.AmbientLight(0xffffff, 0.1));
+scene.add(new THREE.AmbientLight(0xffffff, 10));
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 
 function animate() {
     requestAnimationFrame(animate);
-
     controls.update();
-
     renderer.render(scene, camera);
+    if (mixer) mixer.update(0.02);
+
 }
 
 animate();

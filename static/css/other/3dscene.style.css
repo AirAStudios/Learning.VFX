@@ -5,7 +5,7 @@
     height: 100%;
     width: 100%;
     display: block;
-    margin-top: clamp(2.5rem, 5.3rem, 7.2rem);
+    margin-top: clamp(1.5rem, 2.8rem, 5.1rem);
 }
 .scene {
   position: fixed;
