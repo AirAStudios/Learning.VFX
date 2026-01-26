@@ -1,0 +1,67 @@
+{% extends "layout_fav.html" %}
+
+{% block style %}
+    <link href="/static/css/style.main.css" rel="stylesheet">
+    <link href="/static/css/menus/login.style.menus.css" rel="stylesheet">
+    <link href="/static/css/colour/chemistry.style.colour.css" rel="stylesheet">
+    <link href="/static/css/other/3dscene.style.css" rel="stylesheet">
+    <link href="/static/css/other/chem1.style.css" rel="stylesheet">
+{% endblock %}
+
+{% block favicon %}
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon_io/site.webmanifest">
+{% endblock %}
+{% block title %}
+    Fractional Distillation:
+{% endblock %}
+
+        {% block dropdown %}  
+        <div class="dropdown drop_ui drop">
+            <ul class="dropdown_list drop_ui">
+                <li>
+                    <div class="blue_text_bounding_box drop" id="home_box">
+                        <div class="dropdown_item_blue fontmain bluetext drop">HOME</div>
+                        <div class="blue_checkbox drop">
+                            <div class="blue_tick_icon drop"></div>
+                        </div>
+                    </div>
+                </li>
+                <script>
+                    document.getElementById("home_box").addEventListener('click', function() {
+                        window.location.href = "/";
+                    })
+                </script>
+                <li>
+                    <div class="purple_text_bounding_box drop" id="chemistry_box">
+                        <div class="dropdown_item_purple fontmain purpletext drop">CHEMISTRY</div>
+                        <div class="purple_checkbox drop">
+                            <div class="purple_tick_icon drop"></div>
+                        </div>
+                    </div>
+                </li>
+                <script>
+                    document.getElementById("chemistry_box").addEventListener('click', function() {
+                        window.location.href = "/chemistry";
+                    })
+                </script>
+            </ul>
+        </div>
+        {% endblock %}
+        {% block route %}
+        "/chem2"
+        {% endblock %}
+
+    {% block main %}
+        <div class="purpletext fontbold large_title"></div>
+        <canvas id="scene" class="main_scene"></canvas>
+        <script type="module" src="static/js/chem2.scene.js"></script>
+        <div class="ui">
+            <div class="edit" id="edit">
+                <div class="toggle_btn_tick_icon" id="edit_tick"></div>
+                <div class="btn_text fontmain purpletext">Edit</div>
+            </div>
+        </div>
+    {% endblock %}

@@ -32,16 +32,16 @@ def chemistry():
     return favourites_route("/chemistry", "CHEMISTRY", "chemistry.html", "purpletext")
 
 @app.route("/molecule_visualiser", methods=["GET", "POST"])
-def chem1():
+def molecule_visualiser():
     #return molecule visualiser
     from app_functions import favourites_route
-    return favourites_route("/chem1", "MOLECULE VISUALISER", "chem1.html", "purpletext")
+    return favourites_route("/molecule_visualiser", "MOLECULE VISUALISER", "chem1.html", "purpletext")
 
 @app.route("/fractional_distillation", methods=["GET", "POST"])
-def chem2():
+def fractional_distillation():
     #return animation viewer
     from app_functions import favourites_route
-    return favourites_route("/chem2", "FRACTIONAL DISTILLATION", "chem2.html", "purpletext")
+    return favourites_route("/fractional_distillation", "FRACTIONAL DISTILLATION", "chem2.html", "purpletext")
     
 
 @app.route("/login", methods=["GET", "POST"])

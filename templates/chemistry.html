@@ -62,25 +62,25 @@
                     <div class="down_arrow_icon select_item"></div>
                 </div>
                 <span class="label fontmain select_item">SELECT TOOL</span>
-                <div class="chem_bar select_item chem_bar1" id="atom_visualiser">
-                    <span class="label_chem fontmain select_item">ATOM VISUALISER</span>
-                </div>
-                <script>
-                    document.getElementById("atom_visualiser").addEventListener('click', function() {
-                        //From stack overflow
-                        if (document.getElementById("atom_visualiser").classList.contains('active')) {
-                            window.location.href = '/chem1';
-                        }
-                    })
-                </script>
-                <div class="chem_bar select_item chem_bar2" id="3d_animation">
+                <div class="chem_bar select_item chem_bar1" id="fractional_distillation">
                     <span class="label_chem fontmain select_item">FRACTIONAL DISTILLATION</span>
                 </div>
                 <script>
-                    document.getElementById("3d_animation").addEventListener('click', function() {
+                    document.getElementById("fractional_distillation").addEventListener('click', function() {
                         //From stack overflow
-                        if (document.getElementById("3d_animation").classList.contains('active')) {
-                            window.location.href = '/chem2';
+                        if (document.getElementById("fractional_distillation").classList.contains('active')) {
+                            window.location.href = '/fractional_distillation';
+                        }
+                    })
+                </script>
+                <div class="chem_bar select_item chem_bar2" id="molecule_visualiser">
+                    <span class="label_chem fontmain select_item">MOLECULE VISUALISER</span>
+                </div>
+                <script>
+                    document.getElementById("molecule_visualiser").addEventListener('click', function() {
+                        //From stack overflow
+                        if (document.getElementById("molecule_visualiser").classList.contains('active')) {
+                            window.location.href = '/molecule_visualiser';
                         }
                     })
                 </script>

@@ -1,5 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+const pickPosition = {x: 0, y: 0};
+
 
 export var global_active = 0;
 export function setGlobal_Active(a) {
@@ -99,3 +101,43 @@ export function combine(function1, function2) {
     function2()
 }
 
+//Select objects - learned from https://threejs.org/manual/#en/picking
+export class PickHelper {
+  constructor() {
+    this.raycaster = new THREE.Raycaster();
+    this.pickedObject = null;
+    this.pickedObjectSavedColor = 0;
+  }
+  pick(normalizedPosition, scene, camera) {
+    // restore the color if there is a picked object
+    if (this.pickedObject) {
+      this.pickedObject.material.color.setHex(this.pickedObjectSavedColor);
+      this.pickedObject = undefined;
+    }
+ 
+    // cast a ray through the frustum
+    this.raycaster.setFromCamera(normalizedPosition, camera);
+    // get the list of objects the ray intersected
+    const intersectedObjects = this.raycaster.intersectObjects(scene.children);
+    if (intersectedObjects.length) {
+      // pick the first object. It's the closest one
+      this.pickedObject = intersectedObjects[0].object;
+      console.log(this.pickedObject.name)
+      if (this.pickedObject.name == 'Text006') {
+        this.pickedObject.material.color.setHex(0xAAAAAA);
+      }
+      this.pickedObjectSavedColor = this.pickedObject.material.color.getHex();
+      // save its color
+      // set its emissive color to flashing red/yellow
+    }
+  }
+}
+
+export function clearPickPosition() {
+  // unlike the mouse which always has a position
+  // if the user stops touching the screen we want
+  // to stop picking. For now we just pick a value
+  // unlikely to pick something
+  pickPosition.x = -100000;
+  pickPosition.y = -100000;
+}
